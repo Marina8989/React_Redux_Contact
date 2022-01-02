@@ -2,6 +2,7 @@ import { Switch, Route} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import AddContact from './components/AddContact';
+import EditContact from "./components/EditContact";
 
 const App = () => {
   return (
@@ -9,12 +10,8 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={() => <Home />}/>
-        <Route path="/add" >
-          <AddContact />
-        </Route>
-        <Route path="/edit:id">
-
-        </Route>
+        <Route path="/add" component={() => <AddContact />}/>
+        <Route path="/edit/:id" component={() => <EditContact />} />
       </Switch>
     </div>
   );
