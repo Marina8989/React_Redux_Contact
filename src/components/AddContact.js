@@ -5,6 +5,10 @@ const AddContact = () => {
 
     const handleSubmit = (e) => {
        e.preventDefault();
+
+       if(!name || !email){
+         console.log("Please enter name and email")
+       }
     }
     return (
         <form onSubmit={handleSubmit}>
