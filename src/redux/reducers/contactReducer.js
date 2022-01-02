@@ -1,9 +1,11 @@
 const initialState = [
     {
+        id: 0,
         name: 'Marina Alt',
         email: 'marina@gmail.com'
     },
     {
+        id: 1,
         name: 'Test Test',
         email: 'test@gmail.com'
     }
@@ -17,3 +19,5 @@ const contactReducer = (state = initialState, action) => {
           return state;
    }
 }
+
+export default contactReducer;
