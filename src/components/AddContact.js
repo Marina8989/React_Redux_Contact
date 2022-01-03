@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch} from "react-redux"
+import { useSelector, useDispatch} from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const AddContact = () => {
     const [name, setName] = useState("");
@@ -8,6 +9,7 @@ const AddContact = () => {
   
     const contacts = useSelector(state => state);
     const dispatch = useDispatch();
+    const history = useHistory();
     console.log(contacts)
 
     const handleSubmit = (e) => {
@@ -38,7 +40,8 @@ const AddContact = () => {
           number
       }
 
-      dispatch({type: "ADD_CONTACT", payload: data})
+      dispatch({type: "ADD_CONTACT", payload: data});
+      history.push("/");
     }
 
     return (
