@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
-    const contacts = useSelector(state => state)
+    const contacts = useSelector(state => state);
+    const dispatch = useDispatch();
+    
+    const handleDelete = (id) => {
+        console.log(id);
+       dispatch({type: "DELETE_CONTACT", payload: id})
+    }
 
     return (
         <div>
@@ -25,7 +31,7 @@ const Home = () => {
                           <td>{contact.number}</td>
                           <td>
                               <Link to={`/edit/${id}`}>Edite</Link>
-                              <button>Delete</button>
+                              <button onClick={() => handleDelete(id)}>Delete</button>
                           </td>
                         </tr>
                     ))}
