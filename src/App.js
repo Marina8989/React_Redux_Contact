@@ -1,21 +1,21 @@
 import React from "react";
-import { Switch, Route} from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import AddContact from "./components/AddContact";
-import EditContact from "./components/EditContact";
+import { connect } from "react-redux";
+import {incrementCounter} from './counter/action';
 
-const App = () => {
+const App = (props) => {
     return (
         <div>
-            <Navbar />
-            <Switch>
-                <Route exact path="/" component={() => <Home />} />
-                <Route path="/add" component={() => <AddContact />} />
-                <Route path="/edit/:id" component={() => <EditContact />} />
-            </Switch>
+            <h2>{props.counter}</h2>
+            <button onClick={props.increment}>Add Number</button>
         </div>
     )
 }
 
-export default App
+const mapStateToProps = (state) => ({
+     counter: state.counter
+})
+const mapDispatchToProps = {
+    increment: incrementCounter
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(App)
