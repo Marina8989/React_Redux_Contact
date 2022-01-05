@@ -1,22 +1,32 @@
 const initialState = {
-    data: ['buy a house', 'get a car', 'get a new job']
+    data: [],
+    isLoading: false,
+    isError: false
 }
 
-export const ADD_TODO = "ADD_TODO";
-export const DELETE_TODO = "DELETE_TODO";
+export const GET_USER_PENDING = "GET_USER_PENDING";
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
+export const GET_USER_ERROR = "GET_USER_ERROR";
 
 const todosReducer = (state=initialState, action) => {
-    switch(action.type){
-        case ADD_TODO:
+    switch(action.type){ 
+        case GET_USER_PENDING:
             return {
                 ...state,
-                data: [...state.data, action.payload]
-            }
-        case DELETE_TODO:
+                isLoading: true
+            } 
+        case GET_USER_SUCCESS:
             return {
                 ...state,
-                data: state.data.filter(el => el !== action.payload)
-            }    
+                data: action.payload,
+                isLoading: false
+            }  
+        case GET_USER_ERROR:
+            return {
+                ...state,
+                isError: true,
+                isLoading: false
+            }     
         default:
             return state;
     }

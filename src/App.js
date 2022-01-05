@@ -1,32 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
-import {addTodo, deleteTodo} from "./store/todos/action";
+import {getData} from "./store/todos/action";
 
 
 const App = (props) => {
-    const [value, setValue] = useState("");
-    const handleSubmit = (e) => {
-       e.preventDefault();
-       props.addTodo(value);
-       setValue("");
-    }
+   useEffect(()=>{
+    props.getData();
+   }, [])
+   console.log('test', props.todos)
     return (
         <div>
-            <h2>Todo list</h2>
-            <form onSubmit={handleSubmit}>
-                <input value={value} onChange={(e) => setValue(e.target.value)} />
-            </form>
-            {props.todos.map(todo => <div key={todo} onClick={() => props.deleteTodo(todo)}>{todo}</div>)}
+            <h2>Namelist</h2>
+            {props.isLoading && <h3>Loading...</h3>}
+            {props.todos.map(todo => <div key={todo.name}>{todo.name}</div>)}
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-     todos: state.todos.data
+     todos: state.todos.data,
+     isLoading: state.todos.isLoading,
+     isError: state.todos.isError
 })
 const mapDispatchToProps = {
-  addTodo,
-  deleteTodo
+  getData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps )(App)

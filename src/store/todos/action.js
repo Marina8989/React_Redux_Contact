@@ -1,11 +1,16 @@
-import {ADD_TODO, DELETE_TODO} from "./index";
+import axios from "axios";
+import {GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR } from "./index";
 
-export const addTodo = (value) => ({
-    type: ADD_TODO,
-    payload: value
-})
+export const getData = () => async (dispatch, getState) => {
+   try{
+     dispatch({type: GET_USER_PENDING});
 
-export const deleteTodo = (value) => ({
-    type: DELETE_TODO,
-    payload: value
-})
+     const {data} = await axios("https://rickandmortyapi.com/api/character")
+     dispatch({
+       type: GET_USER_SUCCESS,
+       payload: data.results
+     })
+   }catch(err){
+     dispatch({type: GET_USER_ERROR, payload: err})
+   }
+}
