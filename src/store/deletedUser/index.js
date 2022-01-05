@@ -2,11 +2,11 @@ const initialState = {
     data: []
 }
 
-export const REMOVE_USER = "REMOVE_USER";
+export const ADD_DELETED_USER = "ADD_DELETED_USER";
 
 function deletedUserReducer(state=initialState, action){
    switch(action.type){
-     case REMOVE_USER:
+     case ADD_DELETED_USER:
          return {
              ...state,
              data: [...state.data, action.payload]

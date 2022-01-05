@@ -1,8 +1,6 @@
-import {REMOVE_USER} from "./index";
+import {ADD_DELETED_USER} from './index';
 
-export const removeUser = (user) => (dispatch, getState) =>{
-   dispatch({
-     type: REMOVE_USER,
-     payload: user
-   })
-}
+export const addDeletedUser = (user) => ({
+   type: ADD_DELETED_USER,
+   payload: user
+})
