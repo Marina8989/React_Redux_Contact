@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { connect } from "react-redux";
-import {getData} from "./store/todos/action";
+import {getData, removeUser} from "./store/todos/action";
 
 
 const App = (props) => {
@@ -12,7 +12,7 @@ const App = (props) => {
         <div>
             <h2>Namelist</h2>
             {props.isLoading && <h3>Loading...</h3>}
-            {props.todos.map(todo => <div key={todo.name}>{todo.name}</div>)}
+            {props.todos.map(todo => <div key={todo.name} onClick={() => removeUser(todo)}>{todo.name}</div>)}
         </div>
     )
 }
@@ -23,7 +23,8 @@ const mapStateToProps = (state) => ({
      isError: state.todos.isError
 })
 const mapDispatchToProps = {
-  getData
+  getData,
+  removeUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps )(App)

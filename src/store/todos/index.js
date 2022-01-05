@@ -7,6 +7,7 @@ const initialState = {
 export const GET_USER_PENDING = "GET_USER_PENDING";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_ERROR = "GET_USER_ERROR";
+export const REMOVE_USER = "REMOVE_USER";
 
 const todosReducer = (state=initialState, action) => {
     switch(action.type){ 
@@ -26,7 +27,12 @@ const todosReducer = (state=initialState, action) => {
                 ...state,
                 isError: true,
                 isLoading: false
-            }     
+            }  
+        case REMOVE_USER:
+            return {
+                ...state,
+                data: action.payload
+            }       
         default:
             return state;
     }
