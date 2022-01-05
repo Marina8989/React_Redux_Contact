@@ -13,6 +13,7 @@ const App = (props) => {
             <h2>Namelist</h2>
             {props.isLoading && <h3>Loading...</h3>}
             {props.todos.map(todo => <div key={todo.name} onClick={() => removeUser(todo)}>{todo.name}</div>)}
+            {props.deletedUser.map(el => <div key={el.name}>{el.name}</div>)}
         </div>
     )
 }
@@ -20,7 +21,8 @@ const App = (props) => {
 const mapStateToProps = (state) => ({
      todos: state.todos.data,
      isLoading: state.todos.isLoading,
-     isError: state.todos.isError
+     isError: state.todos.isError,
+     deletedUser: state.deletedUser.data
 })
 const mapDispatchToProps = {
   getData,
