@@ -3,6 +3,7 @@ const initialState = {
 }
 
 export const ADD_TODO = "ADD_TODO";
+export const DELETE_TODO = "DELETE_TODO";
 
 const todosReducer = (state=initialState, action) => {
     switch(action.type){
@@ -11,6 +12,11 @@ const todosReducer = (state=initialState, action) => {
                 ...state,
                 data: [...state.data, action.payload]
             }
+        case DELETE_TODO:
+            return {
+                ...state,
+                data: state.data.filter(el => el !== action.payload)
+            }    
         default:
             return state;
     }
