@@ -1,17 +1,21 @@
-import React from "react";
-import {connect} from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { incrementCounter } from './store';
 
 const App = (props) => {
     return (
-        <div>
-            <h2>Redux Tutorial</h2>
-            <h3>{props.counter}</h3>
-        </div>
+        <>
+         <h2>Redux Tutorial</h2>
+         <h4 onClick={props.increment}>{props.counter}</h4>
+        </>
     )
 }
 
 const mapStateToProps = (state) => ({
     counter: state.counter
 })
+const mapDispatchToProps = {
+    increment: incrementCounter
+}
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
