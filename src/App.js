@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect } from 'react-redux';
-import { incrementCounter } from  './store';
+import { incrementCounter } from  './store/counter/actions';
 
 const App = (props) => {
     return (
