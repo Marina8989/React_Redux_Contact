@@ -1,32 +1,17 @@
-import React, {useEffect} from "react";
-import { connect } from "react-redux";
-import {getData, removeUser} from "./store/todos/action";
-
+import React from "react";
+import {connect} from 'react-redux'
 
 const App = (props) => {
-   useEffect(()=>{
-    props.getData();
-   }, [])
-   console.log('test', props.todos)
     return (
         <div>
-            <h2>Namelist</h2>
-            {props.isLoading && <h3>Loading...</h3>}
-            {props.todos.map(todo => <div key={todo.name} onClick={() => removeUser(todo)}>{todo.name}</div>)}
-            {props.deletedUser.map(el => <div key={el.name}>{el.name}</div>)}
+            <h2>Redux Tutorial</h2>
+            <h3>{props.counter}</h3>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-     todos: state.todos.data,
-     isLoading: state.todos.isLoading,
-     isError: state.todos.isError,
-     deletedUser: state.deletedUser.data
+    counter: state.counter
 })
-const mapDispatchToProps = {
-  getData,
-  removeUser
-}
 
-export default connect(mapStateToProps, mapDispatchToProps )(App)
+export default connect(mapStateToProps)(App)

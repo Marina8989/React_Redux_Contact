@@ -1,10 +1,13 @@
-import {createStore, combineReducers, applyMiddleware} from "redux";
-import thunk from "reduxt-thunk";
-import todos from "./todos";
-import deletedUser from './deletedUser';
+import {combineReducers, createStore} from 'redux';
+
+const initialState = 1
+
+function counterReducer(state=initialState, action) {
+    return state;
+}
 
 const reducers = combineReducers({
-    todos,
-    deletedUser
+    counter: counterReducer
 })
-export const store = createStore(reducers, applyMiddleware(thunk))
+
+export const store = createStore(reducers)
