@@ -1,4 +1,4 @@
-import {INCREMENT_COUNTER} from './index';
+import { INCREMENT_COUNTER } from './index';
 
 export const incrementCounter = () => {
     return {
