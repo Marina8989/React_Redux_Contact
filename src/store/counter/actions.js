@@ -1,20 +1,20 @@
-import { INCREMENT_COUNTER, DECREMENR_COUNTER, USER_NUMBER } from './index';
+import { INCREMENT_NUMBER, DECREASE_NUMBER, COUNTER_NUMBER } from './index';
 
-export const incrementCounter = () => {
+export const incrementNumber = () => {
     return {
-        type: INCREMENT_COUNTER
+        type: INCREMENT_NUMBER
     }
 }
 
-export const decrementCounter = () => {
+export const decreaseNumber = () => {
     return {
-        type: DECREMENR_COUNTER
+        type: DECREASE_NUMBER
     }
 }
 
-export const counterNumber = (numberItem) => {
+export const counterUserNumber = (userItem) => {
     return {
-        type: USER_NUMBER,
-        payload: parseInt(numberItem)
+        type: COUNTER_NUMBER,
+        payload: parseInt(userItem)
     }
 }
