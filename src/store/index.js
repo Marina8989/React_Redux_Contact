@@ -1,8 +1,8 @@
-import {combineReducers, createStore} from 'redux';
+import { combineReducers, createStore} from 'redux';
 import todos from './todos';
 
 const reducers = combineReducers({
-    todos
+   todos
 })
 
 export const store = createStore(reducers)
