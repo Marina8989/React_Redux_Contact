@@ -6,8 +6,6 @@ export const ADD_TODO = "ADD_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
 
 function todosReducer(state = initialState, action) {
-    console.log(action)
-    console.log(state)
     switch(action.type){
         case ADD_TODO:
             return {

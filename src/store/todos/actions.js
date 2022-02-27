@@ -1,4 +1,5 @@
 import {ADD_TODO, REMOVE_TODO} from './index';
+import {addRemovedTodo} from '../deletedTodos/actions';
 
 export const addTodo = (value) => {
    return {
@@ -7,9 +8,10 @@ export const addTodo = (value) => {
    }
 }
 
-export const removeTodo = (value) => {
-    return {
+export const removeTodo = (value) => (dispatch, getState) => {
+    dispatch({
         type: REMOVE_TODO,
         payload: value
-    }
+    })
+    dispatch(addRemovedTodo(value))
 }

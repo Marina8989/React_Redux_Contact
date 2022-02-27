@@ -1,13 +1,13 @@
-import {REMOVE_TODO} from '../todos';
-
 const initialState = {
     data: []
 }
 
+export const ADD_REMOVED_TODO = "ADD_REMOVED_TODO";
+
 function deletedTodosReducer(state=initialState, action) {
     console.log(action.type)
    switch(action.type){
-      case REMOVE_TODO:
+      case ADD_REMOVED_TODO:
           return {
               ...state,
               data: [...state.data, action.payload]
